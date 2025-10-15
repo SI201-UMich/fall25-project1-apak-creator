@@ -1,0 +1,2 @@
+Average sales in New York: $275.60
+Percentage of art orders in East region: 0.00%

@@ -20,9 +20,10 @@ def get_sales(data, state = None, region = None, category = None):
         if (state is None or row['State'] == state) and \
            (region is None or row['Region'] == region) and \
            (category is None or row['Category'] == category):
-            total_sales.append(float(row['Sales']))
-    return total_sales
-
+            try:
+                total_sales.append(float(row['Sales']))
+            except ValueError:
+                continue
     return total_sales
 
 def avg_sales_ny(data):
@@ -30,8 +31,11 @@ def avg_sales_ny(data):
     count = 0
     for row in data:
         if row['State'] == 'New York':
-            total_sales += float(row['Sales'])
-            count += 1
+            try:
+                total_sales += float(row['Sales'])
+                count += 1
+            except ValueError:
+                continue
     return total_sales / count if count > 0 else 0
 
 def percent_east_sales(data):
