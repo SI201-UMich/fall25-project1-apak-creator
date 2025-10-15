@@ -15,7 +15,8 @@ def avg_sales_ny(data):
     total_sales = 0
     count = 0
     for row in data:
-        if row['State'] == 'NY':
+        if row['State'] == 'New York':
             total_sales += float(row['Sales'])
             count += 1
     return total_sales / count if count > 0 else 0
+
